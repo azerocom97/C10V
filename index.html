@@ -382,7 +382,7 @@
             display: none;
         }
 
-        /* Print Styles with Watermark */
+        /* Print Styles */
         @media print {
             body * {
                 visibility: hidden;
@@ -610,7 +610,6 @@
                 </div>
             </section>
 
-            <!-- باقي الأقسام تبقى كما هي -->
             <!-- Outgoing Section -->
             <section id="outgoing" class="section">
                 <div class="section-header">
@@ -695,7 +694,138 @@
                 </div>
             </section>
 
-            <!-- باقي الأقسام -->
+            <!-- Individual Inventory Section -->
+            <section id="individual-inventory" class="section">
+                <div class="section-header">
+                    <h2>الجرد الفردي</h2>
+                </div>
+                <div class="form-group autocomplete-container">
+                    <label for="individual-name">اختر شخص أو اكتب اسمه</label>
+                    <input type="text" id="individual-name" class="form-control" placeholder="اختر شخص أو اكتب اسمه">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn" id="individual-incoming">جرد الداخل له</button>
+                    <button class="btn" id="individual-outgoing">جرد الخارج له</button>
+                    <button class="btn" id="print-individual">طباعة</button>
+                </div>
+                <div class="table-container">
+                    <table id="individual-table">
+                        <thead>
+                            <tr>
+                                <th>النوع</th>
+                                <th>اسم المادة</th>
+                                <th>العدد</th>
+                                <th>السعر</th>
+                                <th>التاريخ</th>
+                                <th>ملاحظات</th>
+                                <th>إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Revenue Section -->
+            <section id="revenue" class="section">
+                <div class="section-header">
+                    <h2>الوارد</h2>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="revenue-day">اليوم</label>
+                        <select id="revenue-day" class="form-control">
+                            <option value="">اختر اليوم</option>
+                            <option value="السبت">السبت</option>
+                            <option value="الأحد">الأحد</option>
+                            <option value="الاثنين">الاثنين</option>
+                            <option value="الثلاثاء">الثلاثاء</option>
+                            <option value="الأربعاء">الأربعاء</option>
+                            <option value="الخميس">الخميس</option>
+                            <option value="الجمعة">الجمعة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="revenue-date">التاريخ</label>
+                        <input type="date" id="revenue-date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="revenue-value">القيمة (د.ع)</label>
+                        <input type="number" id="revenue-value" class="form-control" placeholder="القيمة (د.ع)">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="save-revenue">حفظ</button>
+                    <button class="btn" id="print-revenue">طباعة</button>
+                </div>
+                <div class="success-message" id="revenue-success">تم حفظ الوارد بنجاح</div>
+                <div class="table-container">
+                    <table id="revenue-table">
+                        <thead>
+                            <tr>
+                                <th>اليوم</th>
+                                <th>التاريخ</th>
+                                <th>القيمة (د.ع)</th>
+                                <th>إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Withdrawals Section -->
+            <section id="withdrawals" class="section">
+                <div class="section-header">
+                    <h2>المسحوبات</h2>
+                </div>
+                <div class="form-group autocomplete-container">
+                    <label for="withdrawal-person">اسم الشخص</label>
+                    <input type="text" id="withdrawal-person" class="form-control" placeholder="اسم الشخص">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="withdrawal-amount">المبلغ</label>
+                        <input type="number" id="withdrawal-amount" class="form-control" placeholder="المبلغ">
+                    </div>
+                    <div class="form-group">
+                        <label for="withdrawal-notes">ملاحظات</label>
+                        <input type="text" id="withdrawal-notes" class="form-control" placeholder="ملاحظات">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="save-withdrawal">حفظ</button>
+                    <button class="btn" id="print-withdrawal">طباعة</button>
+                </div>
+                <div class="success-message" id="withdrawal-success">تم حفظ المسحوبات بنجاح</div>
+                <div class="table-container">
+                    <table id="withdrawal-table">
+                        <thead>
+                            <tr>
+                                <th>اسم الشخص</th>
+                                <th>المبلغ</th>
+                                <th>ملاحظات</th>
+                                <th>إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statistics" class="section">
+                <div class="section-header">
+                    <h2>الإحصائيات</h2>
+                </div>
+                <h3 class="text-center">مستوى الدين لكل شخص</h3>
+                <div class="chart-container">
+                    <canvas id="statistics-chart"></canvas>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn" id="print-statistics">طباعة الإحصائيات</button>
+                </div>
+            </section>
 
             <!-- Admin Panel Section -->
             <section id="admin-panel" class="section">
@@ -757,11 +887,31 @@
     <script>
         // ==================== التهيئة الأولية ====================
         window.addEventListener('load', function() {
-            setTimeout(function() {
+            console.log('الصفحة اكتمل تحميلها');
+            
+            // التحقق إذا كان المستخدم مسجل دخول بالفعل
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const loginTime = localStorage.getItem('loginTime');
+            const now = new Date().getTime();
+            
+            // إذا كان مسجل دخول ولم تمر 24 ساعة
+            if (isLoggedIn === 'true' && loginTime && (now - parseInt(loginTime)) < (24 * 60 * 60 * 1000)) {
+                console.log('الدخول التلقائي');
                 document.getElementById('loading-screen').style.display = 'none';
-                document.getElementById('login-screen').style.display = 'flex';
+                document.getElementById('main-dashboard').style.display = 'block';
+                initializeData();
+                loadAllData();
                 loadSystemSettings();
-            }, 2000);
+            } else {
+                // إذا لم يكن مسجل دخول أو انتهت الجلسة
+                console.log('عرض شاشة الدخول');
+                localStorage.setItem('isLoggedIn', 'false');
+                setTimeout(function() {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('login-screen').style.display = 'flex';
+                    loadSystemSettings();
+                }, 2000);
+            }
         });
 
         // ==================== إعدادات النظام ====================
@@ -939,10 +1089,616 @@
             if (!localStorage.getItem('withdrawals')) setStorageData('withdrawals', []);
         }
 
-        // باقي الدوال تبقى كما هي من الكود السابق
-        // ... [يتبع باقي الكود المماثل للكود السابق]
+        function loadAllData() {
+            loadItems();
+            loadIncoming();
+            loadOutgoing();
+            loadRevenue();
+            loadWithdrawals();
+            updateAutocompleteLists();
+            loadStatistics();
+        }
 
-        // ==================== الطباعة مع العلامة المائية ====================
+        // ==================== الإكمال التلقائي ====================
+        function autocomplete(inp, arr) {
+            let currentFocus;
+            
+            inp.addEventListener("input", function(e) {
+                let a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) return false;
+                currentFocus = -1;
+                
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        b.addEventListener("click", function() {
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            
+            function closeAllLists(elmnt) {
+                const x = document.getElementsByClassName("autocomplete-items");
+                for (let i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            
+            document.addEventListener("click", function(e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        function updateAutocompleteLists() {
+            const items = getStorageData('items');
+            const names = items.filter(item => item.type === 'person').map(item => item.name);
+            const materials = items.filter(item => item.type === 'material').map(item => item.name);
+            
+            ['incoming-person', 'outgoing-person', 'individual-name', 'withdrawal-person'].forEach(inputId => {
+                const input = document.getElementById(inputId);
+                if (input) autocomplete(input, names);
+            });
+
+            ['incoming-material', 'outgoing-material'].forEach(inputId => {
+                const input = document.getElementById(inputId);
+                if (input) autocomplete(input, materials);
+            });
+        }
+
+        // ==================== إضافة جديد ====================
+        document.getElementById('save-item').addEventListener('click', function() {
+            const itemType = document.getElementById('new-item-type').value;
+            const itemName = document.getElementById('new-item').value.trim();
+            
+            if (!itemName) {
+                alert('يرجى إدخال اسم');
+                return;
+            }
+            
+            const items = getStorageData('items');
+            items.push({
+                id: Date.now(),
+                type: itemType,
+                name: itemName,
+                date: new Date().toISOString().split('T')[0]
+            });
+            
+            setStorageData('items', items);
+            document.getElementById('new-item').value = '';
+            document.getElementById('add-success').style.display = 'block';
+            setTimeout(() => document.getElementById('add-success').style.display = 'none', 3000);
+            updateAutocompleteLists();
+        });
+
+        document.getElementById('clear-item').addEventListener('click', function() {
+            document.getElementById('new-item').value = '';
+        });
+
+        // ==================== الداخل ====================
+        document.getElementById('save-incoming').addEventListener('click', function() {
+            const person = document.getElementById('incoming-person').value.trim();
+            const material = document.getElementById('incoming-material').value.trim();
+            const quantity = document.getElementById('incoming-quantity').value;
+            const price = document.getElementById('incoming-price').value;
+            const date = document.getElementById('incoming-date').value;
+            const notes = document.getElementById('incoming-notes').value.trim();
+            
+            if (!person || !material || !quantity || !price) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            
+            const incoming = getStorageData('incoming');
+            incoming.push({
+                id: Date.now(),
+                person: person,
+                material: material,
+                quantity: parseInt(quantity),
+                price: parseFloat(price),
+                date: date || new Date().toISOString().split('T')[0],
+                notes: notes
+            });
+            
+            setStorageData('incoming', incoming);
+            clearForm('incoming');
+            showSuccess('incoming-success');
+            loadIncoming();
+            loadStatistics();
+        });
+
+        function loadIncoming() {
+            const incoming = getStorageData('incoming');
+            const tbody = document.querySelector('#incoming-table tbody');
+            tbody.innerHTML = '';
+            
+            incoming.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.person}</td>
+                    <td>${item.material}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price}</td>
+                    <td>${item.date}</td>
+                    <td>${item.notes}</td>
+                    <td><button class="delete-btn" data-id="${item.id}">حذف</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.querySelectorAll('#incoming-table .delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    deleteRecord('incoming', parseInt(this.getAttribute('data-id')));
+                });
+            });
+        }
+
+        // ==================== الخارج ====================
+        document.getElementById('save-outgoing').addEventListener('click', function() {
+            const person = document.getElementById('outgoing-person').value.trim();
+            const material = document.getElementById('outgoing-material').value.trim();
+            const quantity = document.getElementById('outgoing-quantity').value;
+            const price = document.getElementById('outgoing-price').value;
+            const date = document.getElementById('outgoing-date').value;
+            const notes = document.getElementById('outgoing-notes').value.trim();
+            
+            if (!person || !material || !quantity || !price) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            
+            const outgoing = getStorageData('outgoing');
+            outgoing.push({
+                id: Date.now(),
+                person: person,
+                material: material,
+                quantity: parseInt(quantity),
+                price: parseFloat(price),
+                date: date || new Date().toISOString().split('T')[0],
+                notes: notes
+            });
+            
+            setStorageData('outgoing', outgoing);
+            clearForm('outgoing');
+            showSuccess('outgoing-success');
+            loadOutgoing();
+            loadStatistics();
+        });
+
+        function loadOutgoing() {
+            const outgoing = getStorageData('outgoing');
+            const tbody = document.querySelector('#outgoing-table tbody');
+            tbody.innerHTML = '';
+            
+            outgoing.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.person}</td>
+                    <td>${item.material}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price}</td>
+                    <td>${item.date}</td>
+                    <td>${item.notes}</td>
+                    <td><button class="delete-btn" data-id="${item.id}">حذف</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.querySelectorAll('#outgoing-table .delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    deleteRecord('outgoing', parseInt(this.getAttribute('data-id')));
+                });
+            });
+        }
+
+        // ==================== الجرد الشامل ====================
+        document.getElementById('inventory-incoming').addEventListener('click', function() {
+            loadFullInventory('incoming');
+        });
+
+        document.getElementById('inventory-outgoing').addEventListener('click', function() {
+            loadFullInventory('outgoing');
+        });
+
+        function loadFullInventory(type) {
+            const data = getStorageData(type);
+            const tbody = document.querySelector('#full-inventory-table tbody');
+            tbody.innerHTML = '';
+            
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">لا توجد سجلات</td></tr>';
+                return;
+            }
+            
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${type === 'incoming' ? 'داخل' : 'خارج'}</td>
+                    <td>${item.person}</td>
+                    <td>${item.material}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price}</td>
+                    <td>${item.date}</td>
+                    <td>${item.notes}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // ==================== الجرد الفردي ====================
+        document.getElementById('individual-incoming').addEventListener('click', function() {
+            const name = document.getElementById('individual-name').value.trim();
+            if (!name) {
+                alert('يرجى إدخال اسم الشخص');
+                return;
+            }
+            loadIndividualInventory(name, 'incoming');
+        });
+
+        document.getElementById('individual-outgoing').addEventListener('click', function() {
+            const name = document.getElementById('individual-name').value.trim();
+            if (!name) {
+                alert('يرجى إدخال اسم الشخص');
+                return;
+            }
+            loadIndividualInventory(name, 'outgoing');
+        });
+
+        function loadIndividualInventory(name, type) {
+            const data = getStorageData(type);
+            const filteredData = data.filter(item => item.person === name);
+            const tbody = document.querySelector('#individual-table tbody');
+            tbody.innerHTML = '';
+            
+            if (filteredData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">لا توجد سجلات</td></tr>';
+                return;
+            }
+            
+            filteredData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${type === 'incoming' ? 'داخل' : 'خارج'}</td>
+                    <td>${item.material}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price}</td>
+                    <td>${item.date}</td>
+                    <td>${item.notes}</td>
+                    <td><button class="delete-btn" data-id="${item.id}" data-type="${type}">حذف</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.querySelectorAll('#individual-table .delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const recordType = this.getAttribute('data-type');
+                    deleteIndividualRecord(id, recordType, name);
+                });
+            });
+        }
+
+        function deleteIndividualRecord(id, type, name) {
+            if (confirm('هل أنت متأكد من حذف هذا السجل؟')) {
+                if (type === 'incoming') {
+                    let incoming = getStorageData('incoming');
+                    incoming = incoming.filter(item => item.id !== id);
+                    setStorageData('incoming', incoming);
+                } else {
+                    let outgoing = getStorageData('outgoing');
+                    outgoing = outgoing.filter(item => item.id !== id);
+                    setStorageData('outgoing', outgoing);
+                }
+                loadIndividualInventory(name, type);
+                loadStatistics();
+            }
+        }
+
+        // ==================== الوارد ====================
+        document.getElementById('save-revenue').addEventListener('click', function() {
+            const day = document.getElementById('revenue-day').value;
+            const date = document.getElementById('revenue-date').value;
+            const value = document.getElementById('revenue-value').value;
+            
+            if (!day || !date || !value) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            
+            const revenue = getStorageData('revenue');
+            revenue.push({
+                id: Date.now(),
+                day: day,
+                date: date,
+                value: parseFloat(value)
+            });
+            
+            setStorageData('revenue', revenue);
+            document.getElementById('revenue-day').value = '';
+            document.getElementById('revenue-date').value = '';
+            document.getElementById('revenue-value').value = '';
+            showSuccess('revenue-success');
+            loadRevenue();
+        });
+
+        function loadRevenue() {
+            const revenue = getStorageData('revenue');
+            const tbody = document.querySelector('#revenue-table tbody');
+            tbody.innerHTML = '';
+            
+            revenue.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.day}</td>
+                    <td>${item.date}</td>
+                    <td>${item.value}</td>
+                    <td><button class="delete-btn" data-id="${item.id}">حذف</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.querySelectorAll('#revenue-table .delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    deleteRevenueRecord(id);
+                });
+            });
+        }
+
+        function deleteRevenueRecord(id) {
+            if (confirm('هل أنت متأكد من حذف هذا السجل؟')) {
+                let revenue = getStorageData('revenue');
+                revenue = revenue.filter(item => item.id !== id);
+                setStorageData('revenue', revenue);
+                loadRevenue();
+            }
+        }
+
+        // ==================== المسحوبات ====================
+        document.getElementById('save-withdrawal').addEventListener('click', function() {
+            const person = document.getElementById('withdrawal-person').value.trim();
+            const amount = document.getElementById('withdrawal-amount').value;
+            const notes = document.getElementById('withdrawal-notes').value.trim();
+            
+            if (!person || !amount) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            
+            const withdrawals = getStorageData('withdrawals');
+            withdrawals.push({
+                id: Date.now(),
+                person: person,
+                amount: parseFloat(amount),
+                notes: notes,
+                date: new Date().toISOString().split('T')[0]
+            });
+            
+            setStorageData('withdrawals', withdrawals);
+            document.getElementById('withdrawal-person').value = '';
+            document.getElementById('withdrawal-amount').value = '';
+            document.getElementById('withdrawal-notes').value = '';
+            showSuccess('withdrawal-success');
+            loadWithdrawals();
+        });
+
+        function loadWithdrawals() {
+            const withdrawals = getStorageData('withdrawals');
+            const tbody = document.querySelector('#withdrawal-table tbody');
+            tbody.innerHTML = '';
+            
+            withdrawals.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.person}</td>
+                    <td>${item.amount}</td>
+                    <td>${item.notes}</td>
+                    <td><button class="delete-btn" data-id="${item.id}">حذف</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.querySelectorAll('#withdrawal-table .delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    deleteWithdrawalRecord(id);
+                });
+            });
+        }
+
+        function deleteWithdrawalRecord(id) {
+            if (confirm('هل أنت متأكد من حذف هذا السجل؟')) {
+                let withdrawals = getStorageData('withdrawals');
+                withdrawals = withdrawals.filter(item => item.id !== id);
+                setStorageData('withdrawals', withdrawals);
+                loadWithdrawals();
+            }
+        }
+
+        // ==================== الإحصائيات ====================
+        function loadStatistics() {
+            const incoming = getStorageData('incoming');
+            const outgoing = getStorageData('outgoing');
+            
+            // Calculate debt for each person
+            const personDebt = {};
+            
+            // Process incoming (money owed to the person)
+            incoming.forEach(record => {
+                if (!personDebt[record.person]) {
+                    personDebt[record.person] = 0;
+                }
+                personDebt[record.person] += record.quantity * record.price;
+            });
+            
+            // Process outgoing (money the person owes)
+            outgoing.forEach(record => {
+                if (!personDebt[record.person]) {
+                    personDebt[record.person] = 0;
+                }
+                personDebt[record.person] -= record.quantity * record.price;
+            });
+            
+            // Prepare data for chart
+            const persons = Object.keys(personDebt);
+            const debts = persons.map(person => personDebt[person]);
+            
+            const ctx = document.getElementById('statistics-chart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (window.debtChart) {
+                window.debtChart.destroy();
+            }
+            
+            window.debtChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: persons,
+                    datasets: [{
+                        label: 'مستوى الدين (د.ع)',
+                        data: debts,
+                        backgroundColor: debts.map(debt => 
+                            debt >= 0 ? 'rgba(40, 167, 69, 0.7)' : 'rgba(220, 53, 69, 0.7)'
+                        ),
+                        borderColor: debts.map(debt => 
+                            debt >= 0 ? 'rgba(40, 167, 69, 1)' : 'rgba(220, 53, 69, 1)'
+                        ),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'القيمة (د.ع)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'الأشخاص'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `الدين: ${context.parsed.y.toLocaleString()} د.ع`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ==================== دوال مساعدة ====================
+        function clearForm(prefix) {
+            document.getElementById(`${prefix}-person`).value = '';
+            document.getElementById(`${prefix}-material`).value = '';
+            document.getElementById(`${prefix}-quantity`).value = '';
+            document.getElementById(`${prefix}-price`).value = '';
+            document.getElementById(`${prefix}-date`).value = '';
+            document.getElementById(`${prefix}-notes`).value = '';
+        }
+
+        function showSuccess(elementId) {
+            document.getElementById(elementId).style.display = 'block';
+            setTimeout(() => document.getElementById(elementId).style.display = 'none', 3000);
+        }
+
+        function deleteRecord(type, id) {
+            if (confirm('هل أنت متأكد من حذف هذا السجل؟')) {
+                let data = getStorageData(type);
+                data = data.filter(item => item.id !== id);
+                setStorageData(type, data);
+                if (type === 'incoming') loadIncoming();
+                if (type === 'outgoing') loadOutgoing();
+                loadStatistics();
+            }
+        }
+
+        function loadItems() {
+            // يمكن استخدامها إذا أردت عرض العناصر في المستقبل
+        }
+
+        // ==================== المستخدم والتنقل ====================
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === '19970') {
+                // حفظ حالة الدخول
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('loginTime', new Date().getTime().toString());
+                
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-dashboard').style.display = 'block';
+                initializeData();
+                loadAllData();
+                
+                // تعيين التاريخ الحالي
+                const today = new Date().toISOString().split('T')[0];
+                ['incoming-date', 'outgoing-date', 'revenue-date'].forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) element.value = today;
+                });
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+
+        // التنقل بين الأقسام
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetSection = this.getAttribute('data-section');
+                
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetSection) {
+                        section.classList.add('active');
+                    }
+                });
+                
+                if (targetSection === 'admin-panel') {
+                    document.getElementById('admin-panel').classList.add('active');
+                }
+            });
+        });
+
+        document.getElementById('admin-btn').addEventListener('click', function() {
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+            document.getElementById('admin-panel').classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        });
+
+        // الطباعة
         function setupPrintButtons() {
             const printButtons = [
                 'print-incoming', 'print-outgoing', 'print-inventory', 
@@ -974,9 +1730,15 @@
         // استدعاء الدوال عند التحميل
         document.addEventListener('DOMContentLoaded', function() {
             setupPrintButtons();
-            // باقي الكود...
         });
 
+        // حل احتياطي لشاشة التحميل
+        setTimeout(() => {
+            if (document.getElementById('loading-screen').style.display !== 'none') {
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'flex';
+            }
+        }, 3000);
     </script>
 </body>
 </html>
